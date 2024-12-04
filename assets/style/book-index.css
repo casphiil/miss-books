@@ -1,0 +1,26 @@
+.book-list{
+    /* background-color: #eee; */
+    width: 100%;
+}
+.book-preview{
+    display: flex;
+    justify-content: center;
+    padding:10px;
+    gap:6px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.book-preview img{
+    border-radius: 5px;
+}
+.book-preview article{
+    background-color: #eee;
+    border-radius: 10px;
+    width: 20vw;
+    min-width: 100px;
+    min-height: 100px;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto  1fr;
+}
+
