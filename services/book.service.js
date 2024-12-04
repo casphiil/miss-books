@@ -10,7 +10,7 @@ export const bookService = {
   get,
   remove,
   save,
-  getEmptyBook,
+  addBook,
   getDefaultFilter,
 }
 
@@ -21,11 +21,11 @@ function query(filterBy = {}) {
   return storageService.query(BOOK_KEY).then(books => {
     if (filterBy.txt) {
       const regExp = new RegExp(filterBy.txt, 'i')
-      books = books.filter(book => regExp.test(book.vendor))
+      books = books.filter(book => regExp.test(book.title))
     }
 
     if (filterBy.minSpeed) {
-      books = books.filter(book => book.maxSpeed >= filterBy.minSpeed)
+      books = books.filter(book => book.price >= filterBy.minSpeed)
     }
 
     return books
@@ -48,10 +48,6 @@ function save(book) {
   }
 }
 
-function getEmptyBook(vendor = '', maxSpeed = '') {
-  return {vendor, maxSpeed}
-}
-
 function getDefaultFilter(filterBy = {txt: '', minSpeed: 0}) {
   return {txt: filterBy.txt, minSpeed: filterBy.minSpeed}
 }
@@ -62,9 +58,21 @@ function _createBooks() {
     utilService.saveToStorage(BOOK_KEY, booksArchive)
   }
 }
-
-function _createBook(vendor, maxSpeed = 250) {
-  const book = getEmptyBook(vendor, maxSpeed)
-  book.id = utilService.makeId()
-  return book
+function addBook(title, price) {
+  const bookToAdd = _createBook(title, price)
+  return storageService.post(BOOK_KEY, bookToAdd)
+  // saveTo()
+}
+function _createBook(title, amount = 250) {
+  return {
+    id: utilService.makeId(),
+    title,
+    thumbnail: 'http://coding-academy.org/books-photos/20.jpg',
+    description: 'placerat nisi sodales suscipit tellus',
+    listPrice: {
+      amount,
+      currencyCode: 'EUR',
+      isOnSale: false,
+    },
+  }
 }

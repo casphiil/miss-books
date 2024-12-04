@@ -45,13 +45,8 @@ export function BookIndex() {
       return
     }
 
-    const newBook = {
-      /* title,
-      movies, */
-    }
-
     bookService
-      .addBook(newBook)
+      .addBook(title, price)
       .then(newBook => {
         alert(`${title} has been added successfully!`)
         setBooks(books => [newBook, ...books])

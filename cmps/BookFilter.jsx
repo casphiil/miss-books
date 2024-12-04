@@ -5,7 +5,7 @@ export function BookFilter() {
     <section className="book-filter">
       <form>
         <h1>Filter Books</h1>
-        <form>
+        {/* <form>
           <label htmlFor="Title">Title</label>
           <input value="Title" type="text" name="Title" id="Title" />
 
@@ -13,7 +13,7 @@ export function BookFilter() {
           <input value="Price" type="text" name="Price" id="Price" />
 
           <button>Submit</button>
-        </form>
+        </form> */}
       </form>
     </section>
   )
