@@ -46,8 +46,8 @@ export function BookIndex() {
     }
 
     const newBook = {
-      title,
-      movies,
+      /* title,
+      movies, */
     }
 
     bookService
