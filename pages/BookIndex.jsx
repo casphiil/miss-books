@@ -3,6 +3,7 @@ import {BookPreview} from '../cmps/BookPreview.jsx'
 import {BookList} from '../cmps/BookList.jsx'
 import {bookService} from '../services/book.service.js'
 import {booksArchive} from '../booksArchive.js'
+import {BookFilter} from '../cmps/BookFilter.jsx'
 
 export function BookIndex() {
   const [books, setBooks] = useState([])
@@ -61,6 +62,7 @@ export function BookIndex() {
   return (
     <section className="book-index">
       <h2>BookIndex</h2>
+      <BookFilter />
       <button onClick={() => onAddBook()}>Add Book +</button>
       <BookList books={books} onRemoveBook={onRemoveBook} />
     </section>

@@ -3,17 +3,18 @@ const {useState, useEffect} = React
 export function BookFilter() {
   return (
     <section className="book-filter">
+      <h1>Filter Books</h1>
       <form>
-        <h1>Filter Books</h1>
-        {/* <form>
-          <label htmlFor="Title">Title</label>
-          <input value="Title" type="text" name="Title" id="Title" />
+        <label htmlFor="title">Title</label>
+        <input type="text" name="title" id="title" />
 
-          <label htmlFor="Price">Price</label>
-          <input value="Price" type="text" name="Price" id="Price" />
+        <label htmlFor="max-price">Max Price</label>
+        <input type="text" name="max-price" id="max-price" />
 
-          <button>Submit</button>
-        </form> */}
+        <label htmlFor="min-price">Min Price</label>
+        <input type="text" name="min-price" id="min-price" />
+
+        <button>Submit</button>
       </form>
     </section>
   )

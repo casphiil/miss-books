@@ -4,21 +4,28 @@ import {HomePage} from './pages/HomePage.jsx'
 import {BookIndex} from './pages/BookIndex.jsx'
 import {AboutUs} from './pages/AboutUs.jsx'
 
+const Router = ReactRouterDOM.HashRouter
+const {Routes, Route, Navigate} = ReactRouterDOM
+
 export function RootCmp() {
-  const [page, setPage] = useState('index')
+  /* const [page, setPage] = useState('index')
 
   function onSetPage(page) {
     setPage(page)
-  }
+  } */
 
   return (
-    <section className="app main-layout">
-      <AppHeader onSetPage={onSetPage} />
-      <main className="main-layout">
-        {page === 'home' && <HomePage />}
-        {page === 'index' && <BookIndex />}
-        {page === 'about' && <AboutUs />}
-      </main>
-    </section>
+    <Router>
+      <section className="app main-layout">
+        <AppHeader />
+        <main className="main-layout">
+          <Routes>
+            <Route path="" element={<HomePage />} />
+            <Route path="/index" element={<BookIndex />} />
+            <Route path="/about" element={<AboutUs />} />
+          </Routes>
+        </main>
+      </section>
+    </Router>
   )
 }

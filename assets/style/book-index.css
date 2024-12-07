@@ -23,4 +23,20 @@
     display: grid;
     grid-template-rows: auto  1fr;
 }
+.book-filter{
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    
+
+}
+.book-filter form{
+    width:50%;
+    display: grid;
+    justify-items: stretch;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr auto;
+    gap: 6px
+}
 
