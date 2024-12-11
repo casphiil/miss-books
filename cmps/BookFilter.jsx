@@ -1,18 +1,40 @@
-const {useState, useEffect} = React
+import {bookService} from '../services/book.service.js'
+import {debounce} from '../services/util.service.js'
 
-export function BookFilter() {
+const {useState, useEffect, useRef} = React
+
+export function BookFilter({onSetFilter, defaultFilter}) {
+  //
+  const [filterByToEdit, setFilterByToEdit] = useState(defaultFilter)
+  useEffect(() => {
+    onSetFilter(filterByToEdit)
+  }, [filterByToEdit])
+
+  function onSubmitFilter(ev) {
+    ev.preventDefault()
+    console.log('filterByToEdit: ', filterByToEdit)
+    onSetFilter(filterByToEdit)
+  }
+
+  function handleChange({target}) {
+    var {value, name: field} = target
+    setFilterByToEdit(prevFilter => ({...prevFilter, [field]: value}))
+  }
+
+  const {title, publishedDate} = filterByToEdit
+
   return (
     <section className="book-filter">
       <h1>Filter Books</h1>
-      <form>
+      <form onSubmit={onSubmitFilter}>
         <label htmlFor="title">Title</label>
-        <input type="text" name="title" id="title" />
+        <input value={title} onChange={handleChange} type="text" name="title" id="title" />
 
-        <label htmlFor="max-price">Max Price</label>
-        <input type="text" name="max-price" id="max-price" />
+        <label htmlFor="publishedDate">Published Date</label>
+        <input value={publishedDate} onChange={handleChange} type="number" name="publishedDate" id="publishedDate" />
 
-        <label htmlFor="min-price">Min Price</label>
-        <input type="text" name="min-price" id="min-price" />
+        {/* <label htmlFor="price"> Price</label>
+        <input value={price} onChange={handleChange} type="text" name="price" id="price" /> */}
 
         <button>Submit</button>
       </form>

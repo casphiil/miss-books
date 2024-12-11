@@ -19,15 +19,13 @@ export const bookService = {
 
 function query(filterBy = {}) {
   return storageService.query(BOOK_KEY).then(books => {
-    if (filterBy.txt) {
-      const regExp = new RegExp(filterBy.txt, 'i')
+    if (filterBy.title) {
+      const regExp = new RegExp(filterBy.title, 'i')
       books = books.filter(book => regExp.test(book.title))
     }
-
-    if (filterBy.minSpeed) {
-      books = books.filter(book => book.price >= filterBy.minSpeed)
+    if (filterBy.publishedDate) {
+      books = books.filter(book => book.publishedDate >= filterBy.publishedDate)
     }
-
     return books
   })
 }
@@ -48,8 +46,8 @@ function save(book) {
   }
 }
 
-function getDefaultFilter(filterBy = {txt: '', minSpeed: 0}) {
-  return {txt: filterBy.txt, minSpeed: filterBy.minSpeed}
+function getDefaultFilter() {
+  return {title: '', publishedDate: 1000}
 }
 
 function _createBooks() {

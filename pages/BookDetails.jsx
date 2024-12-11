@@ -1,9 +1,9 @@
 const {useState, useEffect} = React
 
-export function AboutUs() {
+export function BookDetails() {
   return (
-    <section className="about-us">
-      <h2>AboutUs</h2>
+    <section className="book-details">
+      <h2>BookDetails</h2>
     </section>
   )
 }

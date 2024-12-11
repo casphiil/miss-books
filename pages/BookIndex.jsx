@@ -33,6 +33,10 @@ export function BookIndex() {
     console.log('remove')
   }
 
+  function onSetFilter(filterBy) {
+    setFilterBy(prevFilter => ({...prevFilter, ...filterBy}))
+  }
+
   function onAddBook() {
     const title = prompt("Enter the book's title:")
     if (!title) {
@@ -58,11 +62,11 @@ export function BookIndex() {
       })
   }
 
-  loadBooks()
+  /* loadBooks() */
   return (
     <section className="book-index">
       <h2>BookIndex</h2>
-      <BookFilter />
+      <BookFilter defaultFilter={filterBy} onSetFilter={onSetFilter} />
       <button onClick={() => onAddBook()}>Add Book +</button>
       <BookList books={books} onRemoveBook={onRemoveBook} />
     </section>
