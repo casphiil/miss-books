@@ -6,13 +6,13 @@ const {useState, useEffect, useRef} = React
 export function BookFilter({onSetFilter, defaultFilter}) {
   //
   const [filterByToEdit, setFilterByToEdit] = useState(defaultFilter)
+  const onSetFilterDebounce = useRef(debounce(onSetFilter)).current
   useEffect(() => {
-    onSetFilter(filterByToEdit)
+    onSetFilterDebounce(filterByToEdit)
   }, [filterByToEdit])
 
   function onSubmitFilter(ev) {
     ev.preventDefault()
-    console.log('filterByToEdit: ', filterByToEdit)
     onSetFilter(filterByToEdit)
   }
 
@@ -32,10 +32,6 @@ export function BookFilter({onSetFilter, defaultFilter}) {
 
         <label htmlFor="publishedDate">Published Date</label>
         <input value={publishedDate} onChange={handleChange} type="number" name="publishedDate" id="publishedDate" />
-
-        {/* <label htmlFor="price"> Price</label>
-        <input value={price} onChange={handleChange} type="text" name="price" id="price" /> */}
-
         <button>Submit</button>
       </form>
     </section>

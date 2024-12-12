@@ -23,6 +23,7 @@
 
 * {
 	box-sizing: border-box;
+	font-family:Arial, Helvetica, sans-serif
 }
 
 body {
@@ -48,8 +49,8 @@ a {
 	text-decoration: none;
 	color: unset;
 	cursor: pointer;
+	display: inline-block;
 }
-
 
 
 /* Dont stretch my Media */
@@ -66,20 +67,22 @@ object {
 }
 
 
-.about nav a {
+.about nav  {
 	margin-right: 10px;
 }
 
-button {
+button, .btn {
 	cursor: pointer;
 	background-color: var(--clr2bg);
 	margin: 0.5em;
 	border: 0;
 	padding: 0.5em 0.8em;
 	border-radius: 4px;
+	text-align: center;
+	font-size: 0.8em;
 }
 
-button:hover {
+button:hover, .btn:hover {
 	background-color: var(--clr2);
 	color: white;
 	transition: 0.3s;
